@@ -1,11 +1,11 @@
 // Components
 import ProductListFilter from "components/product-list-filter/ProductListFilter";
-import ProductThumbnail from "components/product-thumbnail/ProductThumbnail";
+// import ProductThumbnail from "components/product-thumbnail/ProductThumbnail";
 
 const ProductList = () => {
     const productListHandler = () => {
-        return productListHandler.map(({ image, title }) => {
-            return <ProductThumbnail image={image} title={title} />;
+        return productListHandler.map(({ image, title, id }) => {
+            // return <ProductThumbnail key={id} image={image} title={title} />;
         });
     };
 

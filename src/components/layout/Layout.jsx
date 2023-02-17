@@ -1,17 +1,17 @@
-import Header from "components/header/Header"
-import Footer from "components/header/Footer"
-import { Fragment } from "react"
+import Header from "components/header/Header";
+import Footer from "components/footer/Footer";
+import { Fragment } from "react";
 
 const Layout = ({ pageElement }) => {
-    return (
-        <Fragment>
-            <Header />
+	return (
+		<Fragment>
+			<Header />
 
-            {pageElement}
+			{pageElement}
 
-            <Footer />
-        </Fragment>
-    )
-}
+			<Footer />
+		</Fragment>
+	);
+};
 
 export default Layout;
