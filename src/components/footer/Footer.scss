@@ -1,0 +1,78 @@
+@import "utils/styles/variables.scss";
+
+.footer {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	padding: $spacing-xs 15%;
+	background-color: $primary-color-darker;
+
+	:is(h3, span, a) {
+	}
+
+	&__contact-title {
+		margin: 0;
+		margin-bottom: $spacing-xxs;
+		color: $primary-color-lighter;
+	}
+
+	&__contact-info {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+
+		svg {
+			color: $secondary-color;
+			margin-right: $spacing-xxxs;
+		}
+		span {
+			color: $primary-color-lighter;
+		}
+
+		a {
+			font-style: italic;
+			color: $primary-color-lighter;
+		}
+
+		> div:first-of-type {
+			margin-right: $spacing-s;
+		}
+	}
+
+	&__right {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+
+		> div:not(:last-of-type) {
+			margin-right: $spacing-s;
+		}
+	}
+
+	&__right-social {
+		cursor: pointer;
+		background-color: $primary-color-lighter;
+		color: $primary-color-darker;
+		padding: $spacing-xxxs;
+		border-radius: 50px;
+
+		&:hover {
+			color: $secondary-color;
+		}
+	}
+}
+
+// Media queries
+
+@media (max-width: 700px) {
+	.footer {
+		gap: $spacing-s;
+
+		&__contact-info {
+			> div:first-of-type {
+				margin-bottom: $spacing-xxxs;
+			}
+		}
+	}
+}

@@ -1,16 +1,19 @@
+// Components
 import Header from "components/header/Header";
 import Footer from "components/footer/Footer";
-import { Fragment } from "react";
+
+// Styles
+import "./Layout.scss";
 
 const Layout = ({ pageElement }) => {
 	return (
-		<Fragment>
+		<div className="layout">
 			<Header />
 
-			{pageElement}
+			<div className="layout__page">{pageElement}</div>
 
 			<Footer />
-		</Fragment>
+		</div>
 	);
 };
 

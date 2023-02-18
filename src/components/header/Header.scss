@@ -1,0 +1,41 @@
+@import "utils/styles/variables.scss";
+
+.main-header {
+	height: 4rem;
+	color: $primary-color;
+	background-color: $primary-color-lighter;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 15%;
+	box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
+
+	a,
+	span {
+		text-decoration: none;
+		color: $primary-color;
+		font-size: $font-m;
+		font-family: $font-primary;
+		font-weight: 600;
+		cursor: pointer;
+
+		&:hover {
+			color: $primary-color-darker;
+		}
+	}
+
+	&__right {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+
+		> div:not(last-of-type):not(.main-header__cart) {
+			margin-right: $spacing-s;
+		}
+	}
+
+	&__cart {
+		margin-right: $spacing-m;
+	}
+}
