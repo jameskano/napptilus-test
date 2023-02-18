@@ -2,20 +2,41 @@
 import ProductListFilter from "components/product-list-filter/ProductListFilter";
 // import ProductThumbnail from "components/product-thumbnail/ProductThumbnail";
 
+// React
+import { useEffect, useState } from "react";
+
+// Custom hooks
+import useHttp from "utils/hooks/use-http";
+
+// Services
+import { getProductList } from "utils/Services";
+
+// Constants
+import { REQUEST_PRODUCT_LIST_ERROR } from "utils/constants/messages";
+
 const ProductList = () => {
-    const productListHandler = () => {
-        return productListHandler.map(({ image, title, id }) => {
-            // return <ProductThumbnail key={id} image={image} title={title} />;
-        });
-    };
+	const [productList, setProductList] = useState([]);
 
-    return (
-        <div className="product-list">
-            <ProductListFilter />
+	const {
+		isLoading,
+		error,
+		sendRequest: fetchProductList,
+	} = useHttp(getProductList(), setProductList, REQUEST_PRODUCT_LIST_ERROR);
 
-            <div className="product-list__container">{productListHandler}</div>
-        </div>
-    );
+	useEffect(() => {
+		fetchProductList();
+	}, []);
+	console.log(productList);
+	// const productListElements = productList.map(({ image, title, id }) =>
+	// 	<ProductThumbnail key={id} image={image} title={title} />);
+
+	return (
+		<div className="product-list">
+			<ProductListFilter />
+
+			{/* <div className="product-list__container">{productListElements}</div> */}
+		</div>
+	);
 };
 
 export default ProductList;
