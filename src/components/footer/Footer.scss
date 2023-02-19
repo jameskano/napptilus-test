@@ -53,13 +53,28 @@
 	&__right-social {
 		cursor: pointer;
 		background-color: $primary-color-lighter;
-		color: $primary-color-darker;
 		padding: $spacing-xxxs;
 		border-radius: 50px;
 
-		&:hover {
-			color: $secondary-color;
+		svg {
+			color: $primary-color-darker;
+
+			&:hover {
+				animation: spin 500ms ease-in-out;
+				color: $secondary-color;
+			}
 		}
+	}
+}
+
+// Animations
+
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
 	}
 }
 

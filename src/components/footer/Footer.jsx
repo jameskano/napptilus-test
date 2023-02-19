@@ -24,13 +24,19 @@ const Footer = () => {
 
 			<div className="footer__right">
 				<div className="footer__right-social">
-					<FontAwesomeIcon icon={brands("twitter")} size="lg" />
+					<a target="_blank" rel="noreferrer" href="https://www.twitter.com/">
+						<FontAwesomeIcon icon={brands("twitter")} size="lg" />
+					</a>
 				</div>
 				<div className="footer__right-social">
-					<FontAwesomeIcon icon={brands("instagram")} size="lg" />
+					<a target="_blank" rel="noreferrer" href="https://www.instagram.com/">
+						<FontAwesomeIcon icon={brands("instagram")} size="lg" />
+					</a>
 				</div>
 				<div className="footer__right-social">
-					<FontAwesomeIcon icon={brands("youtube")} size="lg" />
+					<a target="_blank" rel="noreferrer" href="https://www.youtube.com/">
+						<FontAwesomeIcon icon={brands("youtube")} size="lg" />
+					</a>
 				</div>
 			</div>
 		</footer>

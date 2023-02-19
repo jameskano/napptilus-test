@@ -1,0 +1,41 @@
+@import "utils/styles/variables.scss";
+
+::-webkit-scrollbar {
+	width: 12px;
+}
+::-moz-scrollbar {
+	width: 12px;
+}
+::-ms-scrollbar {
+	width: 12px;
+}
+
+::-webkit-scrollbar-track {
+	background: #f1f1f1;
+}
+::-moz-scrollbar-track {
+	background: #f1f1f1;
+}
+::-ms-scrollbar-track {
+	background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+	background: $primary-color;
+}
+::-moz-scrollbar-thumb {
+	background: $primary-color;
+}
+::-ms-scrollbar-thumb {
+	background: $primary-color;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: $primary-color-darker;
+}
+::-moz-scrollbar-thumb:hover {
+	background: $primary-color-darker;
+}
+::-ms-scrollbar-thumb:hover {
+	background: $primary-color-darker;
+}

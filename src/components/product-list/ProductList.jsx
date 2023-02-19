@@ -1,6 +1,6 @@
 // Components
 import ProductListFilter from "components/product-list-filter/ProductListFilter";
-// import ProductThumbnail from "components/product-thumbnail/ProductThumbnail";
+import ProductItem from "components/product-item/ProductItem";
 
 // React
 import { useEffect, useState } from "react";
@@ -26,15 +26,16 @@ const ProductList = () => {
 	useEffect(() => {
 		fetchProductList();
 	}, []);
-	console.log(productList);
-	// const productListElements = productList.map(({ image, title, id }) =>
-	// 	<ProductThumbnail key={id} image={image} title={title} />);
+
+	const productListElements = productList.map(({ image, title, id }) => (
+		<ProductItem key={id} image={image} title={title} />
+	));
 
 	return (
 		<div className="product-list">
 			<ProductListFilter />
 
-			{/* <div className="product-list__container">{productListElements}</div> */}
+			<div className="product-list__container">{productListElements}</div>
 		</div>
 	);
 };

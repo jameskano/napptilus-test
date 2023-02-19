@@ -19,15 +19,10 @@ const Header = () => {
 
 			<div className="main-header__right">
 				<div className="main-header__cart">
+					<span>2</span>
 					<a>
-						<FontAwesomeIcon icon={solid("shopping-cart")} size="lg" />
+						<FontAwesomeIcon icon={solid("shopping-cart")} size="xl" />
 					</a>
-				</div>
-				<div>
-					<a>Sign In</a>
-				</div>
-				<div>
-					<a>Sign Up</a>
 				</div>
 			</div>
 		</header>

@@ -1,5 +1,7 @@
 @import "utils/styles/variables.scss";
 
+$cart-size: 22px;
+
 .main-header {
 	height: 4rem;
 	color: $primary-color;
@@ -11,11 +13,10 @@
 	padding: 0 15%;
 	box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
 
-	a,
-	span {
+	a {
 		text-decoration: none;
 		color: $primary-color;
-		font-size: $font-m;
+		font-size: $font-l;
 		font-family: $font-primary;
 		font-weight: 600;
 		cursor: pointer;
@@ -36,6 +37,50 @@
 	}
 
 	&__cart {
+		cursor: pointer;
 		margin-right: $spacing-m;
+		position: relative;
+
+		> span {
+			font-family: $font-primary;
+			font-size: $font-xxs;
+			font-weight: 800;
+			display: flex;
+			width: $cart-size;
+			height: $cart-size;
+			position: absolute;
+			top: -5px;
+			right: -5px;
+			background-color: red;
+			border: 2px solid #fff;
+			color: $primary-color-lighter;
+			border-radius: $cart-size;
+			align-items: center;
+			justify-content: center;
+
+			&:hover {
+				animation: bounce 1000ms ease-in;
+			}
+		}
+	}
+}
+
+// Animation
+
+@keyframes bounce {
+	0% {
+		transform: translateY(0);
+	}
+	25% {
+		transform: translateY(-10px);
+	}
+	50% {
+		transform: translateY(0);
+	}
+	75% {
+		transform: translateY(-5px);
+	}
+	100% {
+		transform: translateY(0);
 	}
 }
