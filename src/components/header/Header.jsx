@@ -8,12 +8,21 @@ import { solid, regular, brands, icon } from "@fortawesome/fontawesome-svg-core/
 // Styles
 import "./Header.scss";
 
+// Routes
+import { routes } from "routes/config";
+
 const Header = () => {
 	return (
 		<header className="main-header">
 			<div className="main-header__left">
 				<div>
-					<NavLink to="/">Home</NavLink>
+					{routes
+						.filter((route) => route.headerPosition === "left")
+						.map((route) => (
+							<NavLink key={route.breadcrumbs} to={route.route}>
+								{route.name}
+							</NavLink>
+						))}
 				</div>
 			</div>
 
@@ -24,6 +33,13 @@ const Header = () => {
 						<FontAwesomeIcon icon={solid("shopping-cart")} size="xl" />
 					</a>
 				</div>
+				{routes
+					.filter((route) => route.headerPosition === "right")
+					.map((route) => (
+						<div key={route.breadcrumbs}>
+							<NavLink to={route.route}>{route.name}</NavLink>
+						</div>
+					))}
 			</div>
 		</header>
 	);

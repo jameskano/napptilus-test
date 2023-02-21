@@ -8,9 +8,6 @@
 	padding: $spacing-xs 15%;
 	background-color: $primary-color-darker;
 
-	:is(h3, span, a) {
-	}
-
 	&__contact-title {
 		margin: 0;
 		margin-bottom: $spacing-xxs;
@@ -89,5 +86,17 @@
 				margin-bottom: $spacing-xxxs;
 			}
 		}
+	}
+}
+
+@media (max-width: 1000px) {
+	.footer {
+		padding: 0 10%;
+	}
+}
+
+@media (max-width: 600px) {
+	.footer {
+		padding: 0 5%;
 	}
 }
