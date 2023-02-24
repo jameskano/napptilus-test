@@ -1,0 +1,20 @@
+@import "utils/styles/variables.scss";
+
+.input-component {
+	border: 2px solid rgba(0, 0, 0, 0.7);
+	height: 2rem;
+	width: 15.5rem;
+	padding-left: $spacing-xxs;
+	border-radius: 4px;
+	font-family: $font-primary;
+	font-size: $font-s;
+
+	&:hover {
+		border-color: $primary-color;
+	}
+
+	&:focus {
+		border-color: $primary-color-darker;
+		outline: 0;
+	}
+}

@@ -1,14 +1,18 @@
+@import "utils/styles/variables.scss";
+
 .layout {
 	width: 100%;
 	height: 100%;
-	margin: 0;
+	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
 
 	&__page {
 		width: 100%;
 		height: 100%;
-		padding: 0 15%;
+		flex: 1;
+		padding: $spacing-xl 15%;
+		display: flex;
 	}
 }
 
@@ -17,7 +21,7 @@
 @media (max-width: 1000px) {
 	.layout {
 		&__page {
-			padding: 0 10%;
+			padding: $spacing-xl 10%;
 		}
 	}
 }
@@ -25,7 +29,7 @@
 @media (max-width: 600px) {
 	.layout {
 		&__page {
-			padding: 0 5%;
+			padding: $spacing-xl 5%;
 		}
 	}
 }

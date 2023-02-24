@@ -8,12 +8,17 @@ $max-column-width: calc((100% - $total-gap) / $column-count);
 
 .product-list {
 	display: flex;
-	justify-content: center;
+	flex-direction: column;
+	width: 100%;
+
+	&__header {
+		padding-bottom: $spacing-l;
+		align-self: flex-end;
+	}
 
 	&__container {
 		width: 100%;
 		display: grid;
-		// grid-auto-flow: column;
 		grid-gap: 2.5rem $column-gap;
 		grid-template-columns: repeat(
 			auto-fit,
@@ -24,5 +29,11 @@ $max-column-width: calc((100% - $total-gap) / $column-count);
 	&__error {
 		text-align: center;
 		color: $color-feedback-error;
+	}
+
+	&__button {
+		margin-top: $spacing-m;
+		display: flex;
+		justify-content: center;
 	}
 }

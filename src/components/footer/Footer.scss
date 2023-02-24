@@ -91,12 +91,12 @@
 
 @media (max-width: 1000px) {
 	.footer {
-		padding: 0 10%;
+		padding: $spacing-xs 10%;
 	}
 }
 
 @media (max-width: 600px) {
 	.footer {
-		padding: 0 5%;
+		padding: $spacing-xs 5%;
 	}
 }

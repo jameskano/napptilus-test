@@ -11,3 +11,12 @@ export const getProductList = () => {
 	};
 	return axios(config);
 };
+
+export const getProductDetail = (productId) => {
+	const url = `${apiUrl}api/product/${productId}`;
+	const config = {
+		url,
+		method: "GET",
+	};
+	return axios(config);
+};

@@ -2,22 +2,18 @@ import { useState, useCallback } from "react";
 
 const useHttp = () => {
 	const [isLoading, setIsLoading] = useState(false);
-	const [error, setError] = useState("");
+	const [error, setError] = useState({});
 
 	const sendRequest = useCallback(async (request, manageData, errorMessage) => {
 		setIsLoading(true);
-		setError("");
+		setError({});
 		try {
-			const response = await request();
-
-			if (response.status !== 200) {
-				throw new Error(errorMessage);
-			}
+			const response = await request;
 
 			const data = await response.data;
 			manageData(data);
 		} catch (error) {
-			setError(error.message);
+			setError({ message: errorMessage, status: error.response.status });
 		} finally {
 			setIsLoading(false);
 		}

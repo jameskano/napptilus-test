@@ -1,0 +1,23 @@
+@import "utils/styles/variables.scss";
+
+.no-access {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	align-self: center;
+	justify-self: center;
+	place-self: center;
+	font-family: $font-primary;
+
+	h1 {
+		color: $primary-color-darker;
+		font-size: 3rem;
+	}
+
+	h3 {
+		font-size: 2rem;
+	}
+}

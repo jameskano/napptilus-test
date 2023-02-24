@@ -1,0 +1,21 @@
+@import "utils/styles/variables.scss";
+
+.button-component {
+	padding: 9px 20px;
+	border-radius: 4px;
+	transition: all 0.2s;
+	background-color: $primary-color;
+	color: #fff;
+	border: none;
+	font-size: $font-s;
+	font-family: $font-primary;
+
+	&:hover {
+		background-color: $primary-color-darker;
+	}
+
+	&:active {
+		background-color: $primary-color-darker;
+		transform: scale(0.95);
+	}
+}

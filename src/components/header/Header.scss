@@ -1,29 +1,50 @@
 @import "utils/styles/variables.scss";
 
 $cart-size: 22px;
+$header-padding: 0 15%;
+$header-padding-smaller: 0 10%;
+$header-padding-smallest: 0 5%;
 
 .main-header {
-	height: 4rem;
 	color: $primary-color;
 	background-color: $primary-color-lighter;
 	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: center;
-	padding: 0 15%;
+	flex-direction: column;
 	box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
 
 	a {
 		text-decoration: none;
-		color: $primary-color;
-		font-size: $font-l;
-		font-family: $font-primary;
-		font-weight: 600;
-		cursor: pointer;
+		white-space: nowrap;
+	}
 
-		&:hover {
-			color: $primary-color-darker;
+	&__top {
+		height: 4rem;
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+		padding: $header-padding;
+
+		a {
+			color: $primary-color;
+			font-size: $font-l;
+			font-family: $font-primary;
+			font-weight: 600;
+			cursor: pointer;
+			transition: all 0.2s;
+
+			&:hover {
+				color: $primary-color-darker;
+			}
 		}
+	}
+
+	&__bottom {
+		width: 100%;
+		height: 2rem;
+		padding: $header-padding;
 	}
 
 	&__right {
@@ -89,12 +110,18 @@ $cart-size: 22px;
 
 @media (max-width: 1000px) {
 	.main-header {
-		padding: 0 10%;
+		&__top,
+		&__bottom {
+			padding: $header-padding-smaller;
+		}
 	}
 }
 
 @media (max-width: 600px) {
 	.main-header {
-		padding: 0 5%;
+		&__top,
+		&__bottom {
+			padding: $header-padding-smallest;
+		}
 	}
 }

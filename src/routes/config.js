@@ -1,25 +1,24 @@
 import ProductDetailPage from "pages/product-detail-page/ProductDetailPage";
 import ProductListPage from "pages/product-list-page/ProductListPage";
 import NoAccessPage from "pages/no-access-page/NoAccessPage";
+import NotFoundPage from "pages/not-found-page/NotFoundPage";
 
 export const routes = [
 	{
-		route: "/sign-in",
-		name: "Sign In",
+		route: "/no-access",
+		name: "No Access",
 		Component: NoAccessPage,
-		headerPosition: "right",
 	},
 	{
-		route: "/sign-up",
-		name: "Sign Up",
-		Component: NoAccessPage,
-		headerPosition: "right",
+		route: "/not-found",
+		name: "Not Found",
+		Component: NotFoundPage,
 	},
-	// {
-	//     route: `/product/${productId}`,
-	//     breadcrumbs: productModel,
-	//     Component: ProductDetailPage,
-	// },
+	{
+		route: `/:productId`,
+		name: "product",
+		Component: ProductDetailPage,
+	},
 	{
 		route: "/",
 		name: "Home",
