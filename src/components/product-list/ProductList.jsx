@@ -26,7 +26,6 @@ const ProductList = () => {
 	const [displayProducts, setDisplayProducts] = useState(28);
 
 	const firstUpdateRef = useRef(true);
-	const inputComponentRef = useRef();
 
 	const { isLoading, error, sendRequest: fetchProductList } = useHttp();
 
@@ -63,8 +62,8 @@ const ProductList = () => {
 			/>
 		));
 
-	const onKeyUpHandler = () => {
-		setProductSearch(inputComponentRef.current.value);
+	const onKeyUpHandler = (e) => {
+		setProductSearch(e.target.value);
 	};
 
 	const filterProducts = () => {
@@ -83,11 +82,7 @@ const ProductList = () => {
 	return (
 		<div className="product-list">
 			<div className="product-list__header">
-				<ProductListFilter
-					productSearch={productSearch}
-					onKeyUpHandler={onKeyUpHandler}
-					inputComponentRef={inputComponentRef}
-				/>
+				<ProductListFilter productSearch={productSearch} onKeyUpHandler={onKeyUpHandler} />
 			</div>
 
 			<div className="product-list__container">

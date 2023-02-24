@@ -4,7 +4,6 @@ import "./Input.scss";
 const Input = ({ placeholder, value, onKeyUpHandler, inputComponentRef }) => {
 	return (
 		<input
-			ref={inputComponentRef}
 			className="input-component"
 			type="text"
 			placeholder={placeholder}

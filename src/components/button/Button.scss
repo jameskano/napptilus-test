@@ -9,6 +9,7 @@
 	border: none;
 	font-size: $font-s;
 	font-family: $font-primary;
+	cursor: pointer;
 
 	&:hover {
 		background-color: $primary-color-darker;
@@ -17,5 +18,10 @@
 	&:active {
 		background-color: $primary-color-darker;
 		transform: scale(0.95);
+	}
+
+	&--disabled {
+		pointer-events: none;
+		background-color: rgba(0, 0, 0, 0.2);
 	}
 }

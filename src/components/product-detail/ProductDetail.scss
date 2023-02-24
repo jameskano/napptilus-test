@@ -5,6 +5,7 @@
 	flex-direction: row;
 	width: 100%;
 	justify-content: center;
+	font-family: $font-primary;
 
 	&__container {
 		width: 100%;
@@ -17,7 +18,7 @@
 
 	&__container-image {
 		min-width: 15.5rem;
-		flex: 1;
+		flex: 0.7;
 
 		div {
 			width: 100%;
@@ -33,6 +34,73 @@
 	&__container-info {
 		flex: 1;
 		min-width: 15.5rem;
+	}
+
+	&__container-title {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+
+		h2 {
+			font-weight: 500;
+
+			&:last-of-type {
+				color: $secondary-color;
+			}
+		}
+	}
+
+	&__container-detail {
+		display: flex;
+		flex-direction: row;
+		border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+		min-width: 350px;
+
+		&:first-of-type {
+			border-top: 1px solid rgba(0, 0, 0, 0.1);
+		}
+
+		> div {
+			flex: 1;
+			padding: $spacing-xxs;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			overflow: hidden;
+
+			&:first-of-type {
+				background-color: $primary-color-lighter;
+			}
+
+			> span {
+				margin-bottom: $spacing-xxxs;
+
+				&:last-of-type {
+					margin: 0;
+				}
+			}
+		}
+	}
+
+	&__container-actions {
+		margin-top: $spacing-s;
+		padding-top: $spacing-s;
+		border-top: 1px solid rgba(0, 0, 0, 0.1);
+
+		> div {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			gap: $spacing-xs;
+
+			> select {
+				flex: 1;
+			}
+		}
+
+		> button {
+			margin-top: $spacing-xs;
+		}
 	}
 
 	&__error {
