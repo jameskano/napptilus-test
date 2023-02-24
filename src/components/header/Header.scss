@@ -78,11 +78,11 @@ $header-padding-smallest: 0 5%;
 			border-radius: $cart-size;
 			align-items: center;
 			justify-content: center;
-
-			&:hover {
-				animation: bounce 1000ms ease-in;
-			}
 		}
+	}
+
+	.cart-animation {
+		animation: bounce 1000ms ease-in;
 	}
 }
 

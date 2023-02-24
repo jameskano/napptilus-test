@@ -1,3 +1,6 @@
+// React
+import { useEffect, useState } from "react";
+
 // Router
 import { NavLink, useLocation } from "react-router-dom";
 
@@ -16,16 +19,17 @@ import BreadCrumbs from "components/breadcrumbs/Breadcrumbs";
 
 // Redux
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { setCartCount } from "redux/actions";
+import { setCartCount, retrieveCartCount } from "redux/actions";
 
 const Header = () => {
 	const location = useLocation();
 	const dispatch = useDispatch();
 
+	const [showAnimation, setShowAnimation] = useState(false);
+
 	const cartCount = useSelector((state) => state.cartCount);
 
-	const setCartCountDispatcher = (count) => dispatch(setCartCount(count));
+	const retrieveCartCountDispatcher = (count) => dispatch(retrieveCartCount(count));
 
 	const count = localStorage.getItem("cartCount");
 	const expiration = localStorage.getItem("dataExpiration");
@@ -33,11 +37,17 @@ const Header = () => {
 	useEffect(() => {
 		if (count && expiration && Date.now() < parseInt(expiration)) {
 			console.log("Data is still valid", count, expiration);
-			setCartCountDispatcher(+count);
+			retrieveCartCountDispatcher(+count);
 		} else {
 			console.log("Data has expired");
 		}
 	}, []);
+
+	useEffect(() => {
+		setShowAnimation(true);
+	}, [cartCount]);
+
+	const animationEndHandler = () => setShowAnimation(false);
 
 	return (
 		<header className="main-header">
@@ -56,7 +66,13 @@ const Header = () => {
 
 				<div className="main-header__right">
 					<div className="main-header__cart">
-						{cartCount > 0 && <span>{cartCount}</span>}
+						{cartCount > 0 && (
+							<span
+								onAnimationEnd={animationEndHandler}
+								className={showAnimation ? "cart-animation" : ""}>
+								{cartCount}
+							</span>
+						)}
 						<a>
 							<FontAwesomeIcon icon={solid("shopping-cart")} size="xl" />
 						</a>

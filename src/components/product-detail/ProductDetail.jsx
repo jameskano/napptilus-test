@@ -31,7 +31,7 @@ const ProductDetail = () => {
 	const location = useLocation();
 	const dispatch = useDispatch();
 
-	const setCartCountDispatcher = (count) => dispatch(setCartCount(count));
+	const setCartCountDispatcher = () => dispatch(setCartCount());
 
 	const cartCount = useSelector((state) => state.cartCount);
 
@@ -125,7 +125,7 @@ const ProductDetail = () => {
 	const addProductHandler = (productCount) => {
 		localStorage.setItem("cartCount", JSON.stringify(productCount.count + cartCount));
 		localStorage.setItem("dataExpiration", Date.now() + 60 * 60 * 1000);
-		setCartCountDispatcher(productCount.count);
+		setCartCountDispatcher();
 	};
 
 	const addProductToCartHandler = () => {
