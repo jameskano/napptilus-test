@@ -20,3 +20,13 @@ export const getProductDetail = (productId) => {
 	};
 	return axios(config);
 };
+
+export const addProduct = (productData) => {
+	const url = `${apiUrl}api/cart`;
+	const config = {
+		url,
+		method: "POST",
+		data: productData,
+	};
+	return axios(config);
+};

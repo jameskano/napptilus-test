@@ -14,6 +14,7 @@ const useHttp = () => {
 			manageData(data);
 		} catch (error) {
 			setError({ message: errorMessage, status: error.response.status });
+			throw new Error(errorMessage);
 		} finally {
 			setIsLoading(false);
 		}

@@ -1,9 +1,10 @@
 @import "utils/styles/variables.scss";
 
-.input-component {
+.selector-component {
 	border: 2px solid rgba(0, 0, 0, 0.2);
 	height: 2rem;
-	width: 15.5rem;
+	min-width: 15.5rem;
+	width: 100%;
 	padding-left: $spacing-xxs;
 	border-radius: 4px;
 	font-family: $font-primary;
