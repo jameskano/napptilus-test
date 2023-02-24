@@ -1,0 +1,68 @@
+@import "utils/styles/variables.scss";
+
+$item-color: #f5f9fc;
+
+.product-item {
+	box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.1);
+	font-family: $font-primary;
+
+	&__image {
+		aspect-ratio: 1/ 1;
+		width: 100%;
+		height: auto;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: $item-color;
+		padding: $spacing-xxxs;
+
+		a {
+			width: 100%;
+			height: 100%;
+		}
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+		}
+	}
+
+	&__info {
+		display: flex;
+		flex-direction: column;
+		padding: $spacing-xs;
+
+		:is(h1, h3) {
+			margin: 0;
+		}
+
+		h3 {
+			font-size: $font-l;
+		}
+
+		span {
+			font-size: $font-s;
+			margin: $spacing-xxs 0 $spacing-s;
+			font-weight: 400;
+		}
+
+		h1 {
+			color: $secondary-color;
+			font-size: $font-xxxl;
+			font-family: $font-secondary;
+			font-weight: 600;
+		}
+
+		a {
+			text-decoration: none;
+			color: black;
+			display: inline-block;
+			transition: all 0.2s;
+
+			&:hover {
+				color: $primary-color-darker;
+			}
+		}
+	}
+}

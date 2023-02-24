@@ -1,0 +1,33 @@
+@import "utils/styles/variables.scss";
+
+.breadcrumbs {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	height: 100%;
+	align-items: center;
+
+	&__link {
+		font-size: $font-s;
+		font-weight: 300;
+		font-family: $font-secondary;
+		color: rgba(0, 0, 0, 0.7);
+		font-style: italic;
+
+		&:hover:not(.breadcrumbs__link--active) {
+			color: $primary-color;
+		}
+
+		&--active {
+			pointer-events: none;
+			color: black;
+			font-weight: 500;
+			@extend .breadcrumbs__link;
+		}
+	}
+
+	> svg {
+		color: black;
+		margin: 0 $spacing-xxxs;
+	}
+}
