@@ -3,9 +3,11 @@ import ProductListFilter from "components/product-list-filter/ProductListFilter"
 import ProductItem from "components/product-item/ProductItem";
 import LoadingSpinner from "components/loading-spinner/LoadingSpinner";
 import Button from "components/button/Button";
+import Backdrop from "components/backdrop/Backdrop";
 
 // React
 import { memo, useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 
 // Custom hooks
 import useHttp from "utils/hooks/use-http";
@@ -86,7 +88,11 @@ const ProductList = () => {
 			</div>
 
 			<div className="product-list__container">
-				{isLoading && <LoadingSpinner />}
+				{isLoading &&
+					createPortal(
+						<Backdrop element={<LoadingSpinner />} />,
+						document.querySelector("#modal-root"),
+					)}
 
 				{!isLoading && error.status && (
 					<span className="product-list__error">{error.message}</span>

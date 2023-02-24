@@ -1,11 +1,12 @@
 // React
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 
 // Custom hooks
 import useHttp from "utils/hooks/use-http";
 
 // Constants
-import { REQUEST_PRODUCT_DETAIL_ERROR } from "utils/constants/messages";
+import { REQUEST_PRODUCT_DETAIL_ERROR, REQUEST_ADD_PRODUCT_ERROR } from "utils/constants/messages";
 
 // Services
 import { getProductDetail, addProduct } from "utils/Services";
@@ -17,12 +18,22 @@ import { Navigate, useLocation } from "react-router-dom";
 import LoadingSpinner from "components/loading-spinner/LoadingSpinner";
 import Button from "components/button/Button";
 import Selector from "components/selector/Selector";
+import Backdrop from "components/backdrop/Backdrop";
 
 // Styles
 import "./ProductDetail.scss";
 
+// Redux
+import { setCartCount } from "redux/actions";
+import { useDispatch, useSelector } from "react-redux";
+
 const ProductDetail = () => {
 	const location = useLocation();
+	const dispatch = useDispatch();
+
+	const setCartCountDispatcher = (count) => dispatch(setCartCount(count));
+
+	const cartCount = useSelector((state) => state.cartCount);
 
 	const [productDetail, setProductDetail] = useState();
 	const [productOptions, setProductOptions] = useState({ storageCode: -1, colorCode: -1 });
@@ -38,16 +49,12 @@ const ProductDetail = () => {
 		"status",
 	];
 
-	const { isLoading, error, sendRequest: fetchProductList } = useHttp();
+	const { isLoading, error, sendRequest } = useHttp();
 
 	useEffect(() => {
 		const locationPaths = location.pathname.split("/");
 		const productId = locationPaths.at(-1).split("=")[1];
-		fetchProductList(
-			getProductDetail(productId),
-			setProductDetail,
-			REQUEST_PRODUCT_DETAIL_ERROR,
-		);
+		sendRequest(getProductDetail(productId), setProductDetail, REQUEST_PRODUCT_DETAIL_ERROR);
 	}, []);
 
 	useEffect(() => {
@@ -115,14 +122,24 @@ const ProductDetail = () => {
 		});
 	};
 
+	const addProductHandler = (productCount) => {
+		localStorage.setItem("cartCount", JSON.stringify(productCount.count + cartCount));
+		localStorage.setItem("dataExpiration", Date.now() + 60 * 60 * 1000);
+		setCartCountDispatcher(productCount.count);
+	};
+
 	const addProductToCartHandler = () => {
 		const productData = { ...productOptions, id: productDetail.id };
-		addProduct(productData).then((res) => console.log(res));
+		sendRequest(addProduct(productData), addProductHandler, REQUEST_ADD_PRODUCT_ERROR);
 	};
 
 	return (
 		<div className="product-detail">
-			{isLoading && <LoadingSpinner />}
+			{isLoading &&
+				createPortal(
+					<Backdrop element={<LoadingSpinner />} />,
+					document.querySelector("#modal-root"),
+				)}
 
 			{!isLoading && error.status && <Navigate to={"/not-found"} replace />}
 

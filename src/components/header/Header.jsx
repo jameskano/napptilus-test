@@ -14,8 +14,30 @@ import { routes } from "routes/config";
 // Components
 import BreadCrumbs from "components/breadcrumbs/Breadcrumbs";
 
+// Redux
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { setCartCount } from "redux/actions";
+
 const Header = () => {
 	const location = useLocation();
+	const dispatch = useDispatch();
+
+	const cartCount = useSelector((state) => state.cartCount);
+
+	const setCartCountDispatcher = (count) => dispatch(setCartCount(count));
+
+	const count = localStorage.getItem("cartCount");
+	const expiration = localStorage.getItem("dataExpiration");
+
+	useEffect(() => {
+		if (count && expiration && Date.now() < parseInt(expiration)) {
+			console.log("Data is still valid", count, expiration);
+			setCartCountDispatcher(+count);
+		} else {
+			console.log("Data has expired");
+		}
+	}, []);
 
 	return (
 		<header className="main-header">
@@ -34,7 +56,7 @@ const Header = () => {
 
 				<div className="main-header__right">
 					<div className="main-header__cart">
-						<span>2</span>
+						{cartCount > 0 && <span>{cartCount}</span>}
 						<a>
 							<FontAwesomeIcon icon={solid("shopping-cart")} size="xl" />
 						</a>
