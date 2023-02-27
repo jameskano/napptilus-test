@@ -19,7 +19,7 @@ const AppRoutes = () => {
 				))}
 				<Route path="/*" element={<Navigate to={"/"} replace />} />
 				<Route path="/sign-in" element={<Navigate to={"/no-access"} replace />} />
-				<Route path="/sign-up*" element={<Navigate to={"/no-access"} replace />} />
+				<Route path="/sign-up" element={<Navigate to={"/no-access"} replace />} />
 			</Routes>
 		</BrowserRouter>
 	);
